@@ -6,49 +6,40 @@
   <link rel="stylesheet" href="screen.css">
 
   <script type="text/javascript">
-    $(document).ready(function() {
-      // Create an array of our animals
-      var animals = [
-        { name: "Red Panda", emoji: "🐼" },
-        { name: "Beta Fish", emoji: "🐟" },
-        { name: "Polar Bear", emoji: "🐻" },
-        { name: "Squirrel", emoji: "🐿" },
-        { name: "Osprey", emoji: "🦅" },
-        { name: "Iguana", emoji: "🦎" },
-        { name: "Bobcat", emoji: "🐈" },
-        { name: "Zebra", emoji: "🦓" }
-      ]
+    // Create an array of our animals
+    const animals = [
+      { name: "panda", fullName: "Red Panda", emoji: "🐼" },
+      { name: "fish", fullName: "Beta Fish", emoji: "🐟" },
+      { name: "bear", fullName: "Polar Bear", emoji: "🐻" },
+      { name: "squirrel", fullName: "Squirrel", emoji: "🐿" },
+      { name: "osprey", fullName: "Osprey", emoji: "🦅" },
+      { name: "iguana", fullName: "Iguana", emoji: "🦎" },
+      { name: "bobcat", fullName: "Bobcat", emoji: "🐈" },
+      { name: "zebra", fullName: "Zebra", emoji: "🦓" }
+    ]
 
-      var answers = []
+    // Store answers as they roll in
+    const answers = []
 
-      // var answers = [
-      //   // Question 1: YES
-      //   ["Red Panda", "Polar Bear", "Squirrel", "Bobcat", "Zebra"],
-      //
-      //   // Question 2: Cheetahs
-      //   ["Zebra", "Bobcat"],
-      //
-      //   // Question 3: Alligator
-      //   ["Osprey", "Iguana"]
-      // ]
-      //
-      // var mergedAnswers = [].concat.apply([], answers)
-      //
-      // console.log(mode(mergedAnswers))
-
-      $(document).on("change", "input[type=radio]", function(event) {
-        answers.push(event.target.value.split(","))
-        console.log(answers)
-      })
-
-      $(document).on("click", "[data-behavior~=resolve-answer]", function(event) {
-        console.log(mode([].concat.apply([], answers)))
-        event.preventDefault()
-      })
+    // Update the answers as you select radio buttons
+    $(document).on("change", "input[type=radio]", function(event) {
+      answers.push(event.target.value.split(","))
     })
 
+    // Click the button to tabulate your result
+    $(document).on("click", "[data-behavior~=tabulate-result]", function(event) {
+      const answer = mode([].concat.apply([], answers))
+      alert("You're a: " + getAnimal(answer).fullName)
+      event.preventDefault()
+    })
+
+    // Find the full name and emoji of the selected animal
+    function getAnimal(answer) {
+      return animals.find(function(obj) { return obj.name === answer })
+    }
+
     // Find the most frequent, unique item in the merged array
-    function mode(arr){
+    function mode(arr) {
       return arr.sort((a,b) =>
           arr.filter(v => v===a).length
         - arr.filter(v => v===b).length
@@ -70,8 +61,8 @@
         <fieldset>
           <legend><strong>Do you like mammals?</strong></legend>
           <dl>
-            <dd><label><input type="radio" name="question[mammals]" value="Red Panda,Polar Bear,Squirrel,Bobcat,Zebra"> Yes</label></dd>
-            <dd><label><input type="radio" name="question[mammals]" value="Beta Fish,Osprey,Iguana"> No</label></dd>
+            <dd><label><input type="radio" name="question[mammals]" value="panda,bear,squirrel,bobcat,zebra"> Yes</label></dd>
+            <dd><label><input type="radio" name="question[mammals]" value="fish,osprey,iguana"> No</label></dd>
           </dl>
         </fieldset>
       </section>
@@ -80,9 +71,9 @@
         <fieldset>
           <legend><strong>Which cat do you like better?</strong></legend>
           <dl>
-            <dd><label><input type="radio" name="question[bigcats]" value="Beta Fish,Bobcat"> Tigers</label></dd>
-            <dd><label><input type="radio" name="question[bigcats]" value="Zebra,Bobcat"> Cheetahs</label></dd>
-            <dd><label><input type="radio" name="question[bigcats]" value="Iguana,Bobcat"> Jaguars</label></dd>
+            <dd><label><input type="radio" name="question[bigcats]" value="fish,bobcat"> Tigers</label></dd>
+            <dd><label><input type="radio" name="question[bigcats]" value="zebra,bobcat"> Cheetahs</label></dd>
+            <dd><label><input type="radio" name="question[bigcats]" value="iguana,bobcat"> Jaguars</label></dd>
           </dl>
         </fieldset>
       </section>
@@ -91,9 +82,9 @@
         <fieldset>
           <legend><strong>Which reptile do you like better?</strong></legend>
           <dl>
-            <dd><label><input type="radio" name="question[reptiles]" value="Iguana,Osprey"> Alligator</label></dd>
-            <dd><label><input type="radio" name="question[reptiles]" value="Iguana,Jaguar"> Crocodile</label></dd>
-            <dd><label><input type="radio" name="question[reptiles]" value="Iguana,Squirrel"> Turtle</label></dd>
+            <dd><label><input type="radio" name="question[reptiles]" value="iguana,osprey"> Alligator</label></dd>
+            <dd><label><input type="radio" name="question[reptiles]" value="iguana,jaguar"> Crocodile</label></dd>
+            <dd><label><input type="radio" name="question[reptiles]" value="iguana,squirrel"> Turtle</label></dd>
           </dl>
         </fieldset>
       </section>
@@ -155,7 +146,7 @@
 
       <footer class="submit-buttons">
         <p>
-          <input type="submit" value="Sort me now!" data-behavior="resolve-answer">
+          <input type="submit" value="Sort me now!" data-behavior="tabulate-result">
         </p>
       </footer>
     </form>
