@@ -19,19 +19,41 @@
     ]
 
     // Store answers as they roll in
-    const answers = []
+    let answers = []
 
     // Update the answers as you select radio buttons
     $(document).on("change", "input[type=radio]", function(event) {
-      answers.push(event.target.value.split(","))
+      const selectedAnswers = event.target.value.split(",")
+      // const previousAnswers = $(event.target).closest("section").data("selectedAnswers")
+
+      // Remove previous answers
+      // answers = answers.filter((el) => !previousAnswers.includes(el))
+
+      // Add the selections to the answers array
+      answers.push(selectedAnswers)
+
+      // Store selected value on the parent <section> element
+      // $(event.target).closest("section").data("selectedAnswers", selectedAnswers)
+
+      console.log(answers)
     })
 
     // Click the button to tabulate your result
     $(document).on("click", "[data-behavior~=tabulate-result]", function(event) {
-      const answer = mode([].concat.apply([], answers))
-      alert("You're a: " + getAnimal(answer).fullName)
       event.preventDefault()
+
+      const answer = mode([].concat.apply([], answers))
+
+      // Display your animal
+      alert("You're a: " + getAnimal(answer).fullName)
+
+      // Reset the form
+      $('form').get(0).reset()
+
+      // Reset the animals array
+      answers = []
     })
+
 
     // Find the full name and emoji of the selected animal
     function getAnimal(answer) {
@@ -56,7 +78,7 @@
       Be sure to answer every question so the zookeeper can do her magic!
     </p>
 
-    <form action="#" method="">
+    <form action="#" method="" id="animalForm">
       <section class="question">
         <fieldset>
           <legend><strong>Do you like mammals?</strong></legend>
