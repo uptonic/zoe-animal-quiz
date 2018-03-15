@@ -20,32 +20,26 @@
 
     // Store answers as they roll in
     let answers = []
-
-    // Update the answers as you select radio buttons
-    $(document).on("change", "input[type=radio]", function(event) {
-      const selectedAnswers = event.target.value.split(",")
-      // const previousAnswers = $(event.target).closest("section").data("selectedAnswers")
-
-      // Remove previous answers
-      // answers = answers.filter((el) => !previousAnswers.includes(el))
-
-      // Add the selections to the answers array
-      answers.push(selectedAnswers)
-
-      // Store selected value on the parent <section> element
-      // $(event.target).closest("section").data("selectedAnswers", selectedAnswers)
-
-      console.log(answers)
-    })
+    let animal = null
+    let selectedAnswers = null
 
     // Click the button to tabulate your result
     $(document).on("click", "[data-behavior~=tabulate-result]", function(event) {
       event.preventDefault()
 
-      const answer = mode([].concat.apply([], answers))
+      // Find all selected answers
+      selectedAnswers = $('input[type=radio]:checked')
+
+      // Add the selections to the answers array
+      selectedAnswers.each(function(){
+        answers.push(this.value.split(","))
+      })
+
+      // Get the most common animal across your answers
+      animal = mode([].concat.apply([], answers))
 
       // Display your animal
-      alert("You're a: " + getAnimal(answer).fullName)
+      alert("You're a: " + getAnimal(animal).fullName)
 
       // Reset the form
       $('form').get(0).reset()
@@ -56,8 +50,8 @@
 
 
     // Find the full name and emoji of the selected animal
-    function getAnimal(answer) {
-      return animals.find(function(obj) { return obj.name === answer })
+    function getAnimal(animal) {
+      return animals.find(function(obj) { return obj.name === animal })
     }
 
     // Find the most frequent, unique item in the merged array
@@ -115,8 +109,8 @@
         <fieldset>
           <legend><strong>Do you like rodents?</strong></legend>
           <dl>
-            <dd><label><input type="radio" name="question[rodents]"> Yes</label></dd>
-            <dd><label><input type="radio" name="question[rodents]"> No</label></dd>
+            <dd><label><input type="radio" name="question[rodents]" value="squirrel"> Yes</label></dd>
+            <dd><label><input type="radio" name="question[rodents]" value="panda,fish,bear,osprey,iguana,bobcat,zebra"> No</label></dd>
           </dl>
         </fieldset>
       </section>
@@ -125,10 +119,10 @@
         <fieldset>
           <legend><strong>What's better?</strong></legend>
           <dl>
-            <dd><label><input type="radio" name="question[texture]"> Leathery</label></dd>
-            <dd><label><input type="radio" name="question[texture]"> Feathery</label></dd>
-            <dd><label><input type="radio" name="question[texture]"> Fuzzy</label></dd>
-            <dd><label><input type="radio" name="question[texture]"> Slippery</label></dd>
+            <dd><label><input type="radio" name="question[texture]" value="iguana"> Leathery</label></dd>
+            <dd><label><input type="radio" name="question[texture]" value="osprey"> Feathery</label></dd>
+            <dd><label><input type="radio" name="question[texture]" value="panda,bear,squirrel,bobcat,zebra"> Fuzzy</label></dd>
+            <dd><label><input type="radio" name="question[texture]" value="fish"> Slippery</label></dd>
           </dl>
         </fieldset>
       </section>
@@ -137,9 +131,9 @@
         <fieldset>
           <legend><strong>Where would you rather live?</strong></legend>
           <dl>
-            <dd><label><input type="radio" name="question[location]"> In the Arctic</label></dd>
-            <dd><label><input type="radio" name="question[location]"> At the equator</label></dd>
-            <dd><label><input type="radio" name="question[location]"> Somewhere in between</label></dd>
+            <dd><label><input type="radio" name="question[location]" value="bear"> In the Arctic</label></dd>
+            <dd><label><input type="radio" name="question[location]" value="fish,iguana,zebra"> At the equator</label></dd>
+            <dd><label><input type="radio" name="question[location]" value="panda,osprey,squirrel,bobcat"> Somewhere in between</label></dd>
           </dl>
         </fieldset>
       </section>
@@ -148,8 +142,8 @@
         <fieldset>
           <legend><strong>Are you a day person or a nigh person?</strong></legend>
           <dl>
-            <dd><label><input type="radio" name="question[daynight]"> Day</label></dd>
-            <dd><label><input type="radio" name="question[daynight]"> Night</label></dd>
+            <dd><label><input type="radio" name="question[daynight]" value="bear,osprey,squirrel,bobcat,fish,iguana,zebra"> Day</label></dd>
+            <dd><label><input type="radio" name="question[daynight]" value="panda"> Night</label></dd>
           </dl>
         </fieldset>
       </section>
@@ -158,10 +152,10 @@
         <fieldset>
           <legend><strong>Which is tastier?</strong></legend>
           <dl>
-            <dd><label><input type="radio" name="question[taste]"> Meat</label></dd>
-            <dd><label><input type="radio" name="question[taste]"> Vegetables</label></dd>
-            <dd><label><input type="radio" name="question[taste]"> Insects</label></dd>
-            <dd><label><input type="radio" name="question[taste]"> Insects</label></dd>
+            <dd><label><input type="radio" name="question[taste]" value="bear,bobcat,osprey,fish"> Meat</label></dd>
+            <dd><label><input type="radio" name="question[taste]" value="zebra"> Vegetables &amp; Grass</label></dd>
+            <dd><label><input type="radio" name="question[taste]" value="iguana"> Insects</label></dd>
+            <dd><label><input type="radio" name="question[taste]" value="panda,squirrel"> Twigs &amp; Berries</label></dd>
           </dl>
         </fieldset>
       </section>
