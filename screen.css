@@ -10,7 +10,7 @@ body {
 }
 
 a {
-  color: #cc0099;
+  color: #c09;
 }
 
 h1 {
@@ -22,8 +22,8 @@ h4 {
 }
 
 .container {
-  max-width: 85%;
   margin: 0 auto;
+  max-width: 85%;
 }
 
 section {
@@ -33,21 +33,21 @@ section {
 }
 
 fieldset {
-  border-color: turquoise;
+  border-color: #40e0d0;
   border-width: 1px;
 }
 
 legend {
-  color: #cc0099;
+  color: #c09;
 }
 
 input[type=submit] {
   -webkit-appearance: none;
+  background-color: #40e0d0;
   font-size: 2rem;
-  border: none;
-  border-radius: .6rem;
+  border: 0;
+  border-radius: 12rem;
   padding: 1.5rem 2rem;
-  background-color: turquoise;
 }
 
 input[type=text] {
