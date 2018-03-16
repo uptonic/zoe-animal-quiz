@@ -45,8 +45,13 @@ $(document).on("click", "[data-behavior~=tabulate-result]", function(event) {
 
 // Click an animal
 $(document).on('click', "[data-behavior~=unzoom]", function(event) {
-  $(".zoom").fadeOut("fast")
   event.preventDefault()
+
+  // Scroll back to the top of the quiz
+  window.scrollTo(0,0)
+
+  // Hide the dialog
+  $(".zoom").fadeOut("fast")
 })
 
 // Find the full name and emoji of the selected animal

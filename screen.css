@@ -41,18 +41,15 @@ legend {
   color: #c09;
 }
 
-input[type=submit] {
+.btn {
   -webkit-appearance: none;
   background-color: #40e0d0;
   font-size: 2rem;
   border: 0;
   border-radius: 12rem;
   padding: 1.5rem 2rem;
-}
-
-input[type=text] {
-  font-size: 1.8rem;
-  padding: 1rem;
+  text-decoration: none;
+  color: #000;
 }
 
 .full-width {
@@ -60,7 +57,7 @@ input[type=text] {
   width: 90%;
 }
 
-.submit-buttons {
+.buttons {
   margin-top: 2em;
 }
 
@@ -92,5 +89,5 @@ input[type=text] {
 
 .zoomed-item__label {
   color: #000;
-  margin: 0;
+  margin: -1em 0 2em 0;
 }
