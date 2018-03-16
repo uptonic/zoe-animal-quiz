@@ -50,15 +50,17 @@ legend {
   padding: 1.5rem 2rem;
   text-decoration: none;
   color: #000;
+  outline: 0;
+  cursor: pointer;
+}
+
+.buttons {
+  margin-top: 2em;
 }
 
 .full-width {
   box-sizing: border-box;
   width: 90%;
-}
-
-.buttons {
-  margin-top: 2em;
 }
 
 .zoom {
