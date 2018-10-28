@@ -1,2 +1,2 @@
-# zoe-animal-quiz
-A simple quiz to find your favorite animal
+# neva-mugwamp-quiz
+A simple quiz to find your Mugwamp house

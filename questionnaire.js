@@ -1,14 +1,9 @@
 // Create an array of our animals
 const animals = [
-  { name: "panda", fullName: "Red Panda", emoji: "🐼" },
-  { name: "fish", fullName: "Beta Fish", emoji: "🐟" },
-  { name: "bear", fullName: "Polar Bear", emoji: "🐻" },
-  { name: "squirrel", fullName: "Squirrel", emoji: "🐿" },
-  { name: "osprey", fullName: "Osprey", emoji: "🦅" },
-  { name: "iguana", fullName: "Iguana", emoji: "🦎" },
-  { name: "bobcat", fullName: "Bobcat", emoji: "🐈" },
-  { name: "zebra", fullName: "Zebra", emoji: "🦓" },
-  { name: "rabbit", fullName: "Rabbit", emoji: "🐰" }
+  { name: "fox", fullName: "Fox Tail", emoji: "🦊" },
+  { name: "owl", fullName: "Owl Talon", emoji: "🦉" },
+  { name: "falcon", fullName: "Falcon Feather", emoji: "🦅" },
+  { name: "bear", fullName: "Bear Paw", emoji: "🐻" }
 ]
 
 // Store answers as they roll in

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Zoe's Animal Questionnaire!</title>
+  <title>Mugwamp</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="questionnaire.js"></script>
 
@@ -10,104 +10,36 @@
 
 <body>
   <div class="container">
-    <h1>Which Animal are You?</h1>
-    <p>
+    <h1>Which house are you in?</h1>
+    <!-- <p>
       Answer the questions below and we’ll figure out which animal you are.
       Be sure to answer every question so the zookeeper can do her magic!
-    </p>
+    </p> -->
 
-    <form action="#" method="" id="animalForm">
+    <form action="#" method="" id="houseForm">
       <section class="question">
         <fieldset>
-          <legend><strong>Do you like mammals?</strong></legend>
+          <legend><strong>How do you like to travel?</strong></legend>
           <dl>
-            <dd><label><input type="radio" name="question[mammals]" value="panda,bear,squirrel,bobcat,zebra,rabbit"> Yes</label></dd>
-            <dd><label><input type="radio" name="question[mammals]" value="fish,osprey,iguana"> No</label></dd>
+            <dd><label><input type="radio" name="question[travel]" value="bear,fox"> On foot</label></dd>
+            <dd><label><input type="radio" name="question[travel]" value="falcon,owl"> By airplane</label></dd>
           </dl>
         </fieldset>
       </section>
 
       <section class="question">
         <fieldset>
-          <legend><strong>Which cat do you like better?</strong></legend>
+          <legend><strong>Which do you like better?</strong></legend>
           <dl>
-            <dd><label><input type="radio" name="question[bigcats]" value="fish,bobcat"> Tigers</label></dd>
-            <dd><label><input type="radio" name="question[bigcats]" value="zebra,bobcat"> Cheetahs</label></dd>
-            <dd><label><input type="radio" name="question[bigcats]" value="iguana,bobcat"> Jaguars</label></dd>
-            <dd><label><input type="radio" name="question[bigcats]" value="rabbit,bobcat"> Mountain Lion</label></dd>
-          </dl>
-        </fieldset>
-      </section>
-
-      <section class="question">
-        <fieldset>
-          <legend><strong>Which reptile do you like better?</strong></legend>
-          <dl>
-            <dd><label><input type="radio" name="question[reptiles]" value="iguana,osprey"> Alligator</label></dd>
-            <dd><label><input type="radio" name="question[reptiles]" value="iguana,jaguar"> Crocodile</label></dd>
-            <dd><label><input type="radio" name="question[reptiles]" value="iguana,squirrel,rabbit"> Turtle</label></dd>
-          </dl>
-        </fieldset>
-      </section>
-
-      <section class="question">
-        <fieldset>
-          <legend><strong>Do you like rodents?</strong></legend>
-          <dl>
-            <dd><label><input type="radio" name="question[rodents]" value="squirrel,rabbit"> Yes</label></dd>
-            <dd><label><input type="radio" name="question[rodents]" value="panda,fish,bear,osprey,iguana,bobcat,zebra"> No</label></dd>
-          </dl>
-        </fieldset>
-      </section>
-
-      <section class="question">
-        <fieldset>
-          <legend><strong>What's better?</strong></legend>
-          <dl>
-            <dd><label><input type="radio" name="question[texture]" value="iguana"> Leathery</label></dd>
-            <dd><label><input type="radio" name="question[texture]" value="osprey"> Feathery</label></dd>
-            <dd><label><input type="radio" name="question[texture]" value="panda,bear,squirrel,bobcat,zebra,rabbit"> Fuzzy</label></dd>
-            <dd><label><input type="radio" name="question[texture]" value="fish"> Slippery</label></dd>
-          </dl>
-        </fieldset>
-      </section>
-
-      <section class="question">
-        <fieldset>
-          <legend><strong>Where would you rather live?</strong></legend>
-          <dl>
-            <dd><label><input type="radio" name="question[location]" value="bear"> In the Arctic</label></dd>
-            <dd><label><input type="radio" name="question[location]" value="fish,iguana,zebra"> At the equator</label></dd>
-            <dd><label><input type="radio" name="question[location]" value="panda,osprey,squirrel,bobcat,rabbit"> Somewhere in between</label></dd>
-          </dl>
-        </fieldset>
-      </section>
-
-      <section class="question">
-        <fieldset>
-          <legend><strong>Are you a day person or a night person?</strong></legend>
-          <dl>
-            <dd><label><input type="radio" name="question[daynight]" value="bear,osprey,squirrel,bobcat,fish,iguana,zebra,rabbit"> Day</label></dd>
-            <dd><label><input type="radio" name="question[daynight]" value="panda"> Night</label></dd>
-          </dl>
-        </fieldset>
-      </section>
-
-      <section class="question">
-        <fieldset>
-          <legend><strong>Which is tastier?</strong></legend>
-          <dl>
-            <dd><label><input type="radio" name="question[taste]" value="bear,bobcat,osprey,fish"> Meat</label></dd>
-            <dd><label><input type="radio" name="question[taste]" value="zebra,rabbit"> Vegetables &amp; Grass</label></dd>
-            <dd><label><input type="radio" name="question[taste]" value="iguana"> Insects</label></dd>
-            <dd><label><input type="radio" name="question[taste]" value="panda,squirrel"> Twigs &amp; Berries</label></dd>
+            <dd><label><input type="radio" name="question[daynight]" value="bear,fox,falcon"> Day</label></dd>
+            <dd><label><input type="radio" name="question[daynight]" value="owl"> Night</label></dd>
           </dl>
         </fieldset>
       </section>
 
       <footer class="buttons">
         <p>
-          <input type="submit" class="btn" value="Show me my animal!" data-behavior="tabulate-result">
+          <input type="submit" class="btn" value="Sort me!" data-behavior="tabulate-result">
         </p>
       </footer>
     </form>
@@ -118,7 +50,7 @@
       <div class="zoomed-item" data-behavior="unzoom">
         <div class="zoomed-item__animal" data-role="animal-emoji"></div>
         <h1 class="zoomed-item__label">
-          You are a… <span data-role="animal-name"></span>!
+          You're in… <span data-role="animal-name"></span>!
         </h1>
 
         <p class="buttons">
